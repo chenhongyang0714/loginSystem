@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 public class guiForChangePassword extends JFrame {
 
-	public static JPanel contentPane;
+	public static JPanel contentPane;  
     
 	/**
 	 * Launch the application.
