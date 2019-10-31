@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -14,13 +15,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
 import java.awt.Color;
-import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Time;
 
 public class guiForLogin extends JFrame {
 
@@ -29,7 +30,7 @@ public class guiForLogin extends JFrame {
 	public static JLabel lblPassword;
 	public static JButton btnEnsure;
 	public static JPasswordField txtPassword;
-	public static boolean whether;
+	public static boolean whether;  // 默认是false
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,7 @@ public class guiForLogin extends JFrame {
 		setResizable(false);  // 设置窗口大小不可改变
 		setTitle("loginSystem");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 358, 282);
+		setBounds(500, 100, 358, 282);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +66,7 @@ public class guiForLogin extends JFrame {
 		lblAccount.setBounds(76, 44, 58, 15);
 		contentPane.add(lblAccount);
 		
-		txtAccount = new JTextField();
+		txtAccount = new JTextField("学号");
 		txtAccount.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {
 			}
@@ -77,6 +78,19 @@ public class guiForLogin extends JFrame {
 			public void keyPressed(KeyEvent e) {
 			}
 		});
+		txtAccount.addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+			}
+			public void mousePressed(MouseEvent e) {
+			}
+			public void mouseExited(MouseEvent e) {
+			}
+			public void mouseEntered(MouseEvent e) {
+			}
+			public void mouseClicked(MouseEvent e) {
+				txtAccount.setText("");
+			}
+		});
 		txtAccount.setBounds(144, 41, 97, 21);
 		contentPane.add(txtAccount);
 		txtAccount.setColumns(10);
@@ -85,12 +99,18 @@ public class guiForLogin extends JFrame {
 		lblPassword.setBounds(76, 88, 58, 15);
 		contentPane.add(lblPassword);
 		
-		btnEnsure = new JButton("Ensure");
+		btnEnsure = new JButton("Ensure");  
 		btnEnsure.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Features features = new Features();
 				whether = features.LandingWithPassword();
-				System.out.println(whether); 
+				
+				if(whether == true) {
+					JOptionPane.showMessageDialog(guiForLogin.this, "登录成功");
+				}
+				if(whether == false) {
+					JOptionPane.showMessageDialog(guiForLogin.this, "登录失败 请重新登录");
+				}
 			}
 		});
 		btnEnsure.setBounds(86, 178, 77, 23);
@@ -156,16 +176,22 @@ public class guiForLogin extends JFrame {
 		lblEnrollAccount.setBounds(251, 44, 58, 15);
 		contentPane.add(lblEnrollAccount);
 		
-		// 给Ensure键添加监听
-		btnEnsure.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(whether == true) {
-					JOptionPane.showMessageDialog(guiForLogin.this, "登陆成功");
-				}
-				if(whether == false) {
-					JOptionPane.showMessageDialog(guiForLogin.this, "登陆失败 请重新登录");
-				}
-			}
-		});
+		// 给Ensure键添加监听(存在线程 高可用 问题)
+//		btnEnsure.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				try {
+//					Thread.sleep(10000);
+//				} catch (InterruptedException e1) {
+//					e1.printStackTrace();
+//				}
+//				
+//				if(whether == true) {
+//					JOptionPane.showMessageDialog(guiForLogin.this, "登录成功");
+//				}
+//				if(whether == false) {
+//					JOptionPane.showMessageDialog(guiForLogin.this, "登录失败 请重新登录");
+//				}
+//			}
+//		});
 	}
 }
