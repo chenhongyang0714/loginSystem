@@ -52,7 +52,7 @@
 	说明:  
 		1. 返回 BooksStorage 中存储的全部书籍(包括: id  bookName  bookAuthor bookPress  bookNumber)
 ***   
-3  
+3     
 	根据书名查询 图书  
 	`public void SelectDesignatedBook();`
 	
