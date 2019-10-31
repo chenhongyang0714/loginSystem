@@ -288,4 +288,25 @@ public class Features implements IBooksManage {
 		
 	}
 	
+	
+	// 根据用户名更改密码
+	public void changePassword(String userAccount, String userPassword) {
+		
+		Connection connection = null;
+		Statement statement = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = JDBCUtils.createConnection();
+			statement = connection.createStatement();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtils.closeResultSet(resultSet);
+			JDBCUtils.closePreparedStatement(preparedStatement);
+			JDBCUtils.closeConnection(connection);
+		}
+	}
 }

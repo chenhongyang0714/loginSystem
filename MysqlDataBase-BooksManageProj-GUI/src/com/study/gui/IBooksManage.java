@@ -1,6 +1,5 @@
 package com.study.gui;
 
-
 /** 
   * @author chy 
   * @date 8 Oct 2019 22:51:51 
@@ -26,4 +25,8 @@ public interface IBooksManage {
 	
 	// 根据书名 续借
 	public int RenewBookByName();
+	
+	
+	// 根据用户名更改密码
+	public void changePassword(String userAccount, String userPassword);
 }

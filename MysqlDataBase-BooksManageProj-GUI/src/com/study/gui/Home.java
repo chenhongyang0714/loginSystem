@@ -27,6 +27,7 @@ public class Home {
 			System.out.println("   4 -- Borrow book by name");
 			System.out.println("   5 -- Repay book by name");
 			System.out.println("   6 -- Renew book by name");
+			System.out.println("   7 -- Change password by userAccount");
 			System.out.println("   0 -- Exit");
 			
 			@SuppressWarnings("resource")
@@ -35,7 +36,7 @@ public class Home {
 			do {
 				System.out.println("Please make a choice:");
 				select = scanner.nextInt();
-			} while(select <0 || select > 6);
+			} while(select <0 || select > 7);
 			
 			switch(select) {
 			case 1:
@@ -79,6 +80,19 @@ public class Home {
 					System.out.println("First please landing yourself!!! \n");
 				} else {
 					features.RenewBookByName();
+				}
+				break;
+			case 7:
+				if(whetherBoolean == false) {
+					System.out.println("First please landing yourself!!! \n");
+				} else {
+					String userAccount = "";
+					String userPassword = "";
+					Scanner scanner2 = new Scanner(System.in);
+					System.out.println("请输入您想更改的账户名和新密码:");
+					userAccount = scanner2.next();
+					userPassword = scanner2.next();
+					features.changePassword(userAccount, userPassword);
 				}
 				break;
 			case 0: 

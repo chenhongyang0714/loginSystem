@@ -16,6 +16,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
+import java.awt.Color;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class guiForLogin extends JFrame {
 
@@ -88,7 +93,7 @@ public class guiForLogin extends JFrame {
 				System.out.println(whether); 
 			}
 		});
-		btnEnsure.setBounds(37, 178, 77, 23);
+		btnEnsure.setBounds(86, 178, 77, 23);
 		contentPane.add(btnEnsure);
 		
 		JButton btnExit = new JButton("Exit");
@@ -99,7 +104,7 @@ public class guiForLogin extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnExit.setBounds(271, 178, 59, 23);
+		btnExit.setBounds(212, 178, 59, 23);
 		contentPane.add(btnExit);
 		
 		txtPassword = new JPasswordField();
@@ -122,7 +127,7 @@ public class guiForLogin extends JFrame {
 		contentPane.add(txtPassword);
 		
 		JLabel lblIdentity = new JLabel("\u8EAB\u4EFD\u4FE1\u606F\uFF1A");
-		lblIdentity.setBounds(65, 133, 77, 15);
+		lblIdentity.setBounds(65, 133, 69, 15);
 		contentPane.add(lblIdentity);
 		
 		JRadioButton rBTeacher = new JRadioButton("\u6559\u5E08");
@@ -130,18 +135,26 @@ public class guiForLogin extends JFrame {
 		contentPane.add(rBTeacher);
 		
 		JRadioButton rBStudent = new JRadioButton("\u5B66\u751F");
-		rBStudent.setBounds(186, 129, 127, 23);
+		rBStudent.setBounds(186, 129, 55, 23);
 		contentPane.add(rBStudent);
 		
-		JButton btnChangePassword = new JButton("ChangePassword");
-		btnChangePassword.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JLabel lblFindPassword = new JLabel("\u627E\u56DE\u5BC6\u7801");
+		lblFindPassword.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				guiForChangePassword frame = new guiForChangePassword();
 				frame.setVisible(true);
 			}
 		});
-		btnChangePassword.setBounds(123, 178, 138, 23);
-		contentPane.add(btnChangePassword);
+
+		lblFindPassword.setForeground(Color.RED);
+		lblFindPassword.setBounds(251, 88, 58, 15);
+		contentPane.add(lblFindPassword);
+		
+		JLabel lblEnrollAccount = new JLabel("\u6CE8\u518C\u8D26\u53F7");
+		lblEnrollAccount.setForeground(Color.RED);
+		lblEnrollAccount.setBounds(251, 44, 58, 15);
+		contentPane.add(lblEnrollAccount);
 		
 		// ¸øEnsure¼üÌí¼Ó¼àÌý
 		btnEnsure.addActionListener(new ActionListener() {
