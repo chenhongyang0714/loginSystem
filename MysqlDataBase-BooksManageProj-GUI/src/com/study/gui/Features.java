@@ -36,15 +36,15 @@ public class Features implements IBooksManage {
 			statement = connection.createStatement();
 			
 			// 基于Eclipse平台
-//			System.out.print("请输入您的学号与姓名: \n");
-//			@SuppressWarnings("resource")
-//			Scanner scanner = new Scanner(System.in);
-//			userNumber = scanner.next();
-//			userName = scanner.next();
+			System.out.print("请输入您的学号与姓名: \n");
+			@SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+			userNumber = scanner.next();
+			userName = scanner.next();
 			
 			// 基于GUI
-			userNumber = guiForLogin.txtAccount.getText();
-			userName = guiForLogin.txtPassword.getText();
+//			userNumber = guiForLogin.txtAccount.getText();
+//			userName = guiForLogin.txtPassword.getText();
 			
 			String sQlString = "select * from users where userNumber = '"+userNumber+"' and userName = '"+userName+"'";
 			resultSet = statement.executeQuery(sQlString);  // 执行sql语句，并返回执行结果
@@ -300,6 +300,22 @@ public class Features implements IBooksManage {
 		try {  
 			connection = JDBCUtils.createConnection();
 			statement = connection.createStatement();
+			
+			String sqlString = "select * from users where userNumber = '" + userAccount + "'";
+			resultSet = statement.executeQuery(sqlString);
+			
+			// 判断是否存在该用户
+			if(resultSet.next()) {
+				
+				String sQLString2 = "update users set userName = '" + userPassword + "' where userNumber = '" + userAccount + "'";
+				preparedStatement = connection.prepareStatement(sQLString2);
+				preparedStatement.executeUpdate();
+				
+				System.out.println("密码修改成功");
+			} else {
+				System.out.println("未检测到该用户，请检查后从新输入");
+			}
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

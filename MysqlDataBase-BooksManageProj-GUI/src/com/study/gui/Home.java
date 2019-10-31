@@ -83,17 +83,13 @@ public class Home {
 				}
 				break;
 			case 7:
-				if(whetherBoolean == false) {
-					System.out.println("First please landing yourself!!! \n");
-				} else {
-					String userAccount = "";
-					String userPassword = "";
-					Scanner scanner2 = new Scanner(System.in);
-					System.out.println("请输入您想更改的账户名和新密码:");
-					userAccount = scanner2.next();
-					userPassword = scanner2.next();
-					features.changePassword(userAccount, userPassword);
-				}
+				String userAccount = "";
+				String userPassword = "";
+				Scanner scanner2 = new Scanner(System.in);
+				System.out.println("请输入您想更改的账户名和新密码:");
+				userAccount = scanner2.next();
+				userPassword = scanner2.next();
+				features.changePassword(userAccount, userPassword);
 				break;
 			case 0: 
 				System.out.println("Bye and Miss you!");
