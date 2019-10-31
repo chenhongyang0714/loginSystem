@@ -303,7 +303,7 @@ public class Features implements IBooksManage {
 			
 			String sqlString = "select * from users where userNumber = '" + userAccount + "'";
 			resultSet = statement.executeQuery(sqlString);
-			
+			  
 			// 判断是否存在该用户
 			if(resultSet.next()) {
 				
