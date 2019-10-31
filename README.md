@@ -89,7 +89,12 @@
 		3. 将借书时间延至60天
 		4. 定义为int型函数: 用于在还没有借书的情况下结束此函数
 
-
+***
+7       
+       	根据用户名更改密码
+	`public void changePassword(String userAccount, String userPassword);`
+	
+	
 
 
 
