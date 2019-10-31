@@ -166,13 +166,19 @@ public class guiForLogin extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-
 		lblFindPassword.setForeground(Color.RED);
 		lblFindPassword.setBounds(251, 88, 58, 15);
 		contentPane.add(lblFindPassword);
 		
 		JLabel lblEnrollAccount = new JLabel("\u6CE8\u518C\u8D26\u53F7");
 		lblEnrollAccount.setForeground(Color.RED);
+		lblEnrollAccount.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				guiForRegisteredAccount frame = new guiForRegisteredAccount();
+				frame.setVisible(true);
+			}
+		});
 		lblEnrollAccount.setBounds(251, 44, 58, 15);
 		contentPane.add(lblEnrollAccount);
 		

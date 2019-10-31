@@ -36,17 +36,15 @@ public class Features implements IBooksManage {
 			statement = connection.createStatement();
 			
 			// 基于Eclipse平台
-//			System.out.print("请输入您的学号与姓名: \n");
-//			@SuppressWarnings("resource")
-//			Scanner scanner = new Scanner(System.in);
-//			userNumber = scanner.next();
-//			userName = scanner.next();
+			System.out.print("请输入您的学号与姓名: \n");
+			@SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+			userNumber = scanner.next();
+			userName = scanner.next();
 			
 			// 基于GUI
-//			String rablishString = guiForLogin.txtAccount.getText();
-			userNumber = guiForLogin.txtAccount.getText();
-			System.out.println(userName);
-			userName = guiForLogin.txtPassword.getText();
+//			userNumber = guiForLogin.txtAccount.getText();
+//			userName = guiForLogin.txtPassword.getText();
 			
 			String sQlString = "select * from users where userNumber = '"+userNumber+"' and userName = '"+userName+"'";
 			resultSet = statement.executeQuery(sQlString);  // 执行sql语句，并返回执行结果
@@ -306,7 +304,6 @@ public class Features implements IBooksManage {
 			  
 			// 判断是否存在该用户
 			if(resultSet.next()) {
-				
 				String sQLString2 = "update users set userName = '" + userPassword + "' where userNumber = '" + userAccount + "'";
 				preparedStatement = connection.prepareStatement(sQLString2);
 				preparedStatement.executeUpdate();
@@ -315,14 +312,56 @@ public class Features implements IBooksManage {
 			} else {
 				System.out.println("未检测到该用户，请检查后从新输入");
 			}
-			
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtils.closeResultSet(resultSet);
 			JDBCUtils.closePreparedStatement(preparedStatement);
+			JDBCUtils.closeResultSet(resultSet);
 			JDBCUtils.closeConnection(connection);
 		}
 	}
+	
+	// 注册新用户
+	public void registeredAccount(String userAccount, String userPassword) {
+		
+		Connection connection = null;
+		Statement statement = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = JDBCUtils.createConnection();
+			statement = connection.createStatement();
+			String sQLString = "select * from users where userNumber = '" + userAccount + "'";
+			resultSet = statement.executeQuery(sQLString);
+			
+			if(!resultSet.next()) {
+				String sQLString2 = "insert into users(userNumber, userName) values (?, ?)";
+				preparedStatement = connection.prepareStatement(sQLString2);
+
+				preparedStatement.setString(1, userAccount);
+				preparedStatement.setString(2, userPassword);
+				
+				int result = preparedStatement.executeUpdate();
+	    		if(result > 0) {
+	    			System.out.println("用户注册成功");
+	    		} else {
+	    			System.out.println("用户注册失败");
+	    		}	
+	    		
+			} else {
+				System.out.println("该用户已存在");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtils.closeResultSet(resultSet);
+			JDBCUtils.closePreparedStatement(preparedStatement);
+			JDBCUtils.closeResultSet(resultSet);
+			JDBCUtils.closeConnection(connection);
+		}
+	}
+	
+	
 }

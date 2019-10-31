@@ -54,7 +54,7 @@ public class guiForChangePassword extends JFrame {
 		setTitle("Change Password");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(860, 100, 358, 282);
+		setBounds(860, 100, 360, 283);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,21 +80,12 @@ public class guiForChangePassword extends JFrame {
 				}
 			}
 		});
-		btnEnsure.setBounds(69, 178, 97, 23);
+		btnEnsure.setBounds(108, 191, 97, 23);
 		contentPane.add(btnEnsure);
 		
 		JLabel lblUserAccount = new JLabel("\u7528\u6237\u540D\uFF1A");
 		lblUserAccount.setBounds(87, 48, 48, 15);
 		contentPane.add(lblUserAccount);
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		btnExit.setBounds(190, 178, 97, 23);
-		contentPane.add(btnExit);
 		
 		txtUserAccount = new JTextField("Ñ§ºÅ");
 		txtUserAccount.addKeyListener(new KeyListener() {

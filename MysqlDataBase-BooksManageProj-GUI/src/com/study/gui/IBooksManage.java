@@ -29,4 +29,7 @@ public interface IBooksManage {
 	
 	// 根据用户名更改密码
 	public void changePassword(String userAccount, String userPassword);
+	
+	// 注册新用户
+	public void registeredAccount(String userAccount, String userPassword);
 }
