@@ -32,7 +32,7 @@ public class guiForLogin extends JFrame {
 	public static JPasswordField txtPassword;
 	public static boolean whether;  // Ä¬ÈÏÊÇfalse
 
-	/**
+	/**  
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
