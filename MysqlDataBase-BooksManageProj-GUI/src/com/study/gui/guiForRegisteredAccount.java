@@ -108,6 +108,7 @@ public class guiForRegisteredAccount extends JFrame {
 					} else if(!(_userAccountString.equals("")) && !(_userPasswordString.equals(""))) {
 						Features features = new Features();
 						features.registeredAccount(_userAccountString, _userPasswordString);
+						JOptionPane.showMessageDialog(guiForRegisteredAccount.this, "注册成功");
 					}
 				}
 			}
@@ -129,6 +130,7 @@ public class guiForRegisteredAccount extends JFrame {
 				} else if(!(_userAccountString.equals("")) && !(_userPasswordString.equals(""))) {
 					Features features = new Features();
 					features.registeredAccount(_userAccountString, _userPasswordString);
+					JOptionPane.showMessageDialog(guiForRegisteredAccount.this, "注册成功");
 				}
 			}
 		});

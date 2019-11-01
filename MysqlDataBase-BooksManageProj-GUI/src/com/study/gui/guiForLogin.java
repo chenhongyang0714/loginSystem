@@ -17,11 +17,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
-import java.awt.event.HierarchyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Time;
 
 public class guiForLogin extends JFrame {
 

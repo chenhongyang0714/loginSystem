@@ -70,8 +70,8 @@ public class guiForChangePassword extends JFrame {
 				if(_txtPassword.equals("") || _txtRePassword.equals("")) {
 					JOptionPane.showMessageDialog(guiForChangePassword.this, "密码不可以为空");
 				} else if(!(_txtPassword.equals(_txtRePassword))) {
-					txtPassword.setText("");
-					txtRePassword.setText("");
+//					txtPassword.setText("");
+//					txtRePassword.setText("");
 					JOptionPane.showMessageDialog(guiForChangePassword.this, "两次密码不相同");
 				}  else if(_txtPassword.equals(_txtRePassword)  && !(_txtPassword.equals(""))) {
 					Features features = new Features();
