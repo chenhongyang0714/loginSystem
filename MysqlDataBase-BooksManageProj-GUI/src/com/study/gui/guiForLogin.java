@@ -71,7 +71,7 @@ public class guiForLogin extends JFrame {
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					txtPassword.requestFocus();
-				}
+				}  
 			}
 			public void keyPressed(KeyEvent e) {
 			}
