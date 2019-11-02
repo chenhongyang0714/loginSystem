@@ -66,14 +66,14 @@
 	
 	说明:  
 		1. 返回 BooksStorage 中存储的全部书籍(包括: id  bookName  bookAuthor bookPress  bookNumber)
-***   
+***     
 3     
 	根据书名查询 图书  
 	`public void SelectDesignatedBook();`
 	
 	说明：
 		1. 如果未查询到对应书名的书籍则-->查询失败
-***	
+***  	
 4  
 	根据书名 借书  
 	`public void BorrowBookByName();`
