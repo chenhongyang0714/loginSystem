@@ -10,7 +10,7 @@ import java.util.Date;
 
 
 /**  通过sql查询数据库Mysql里的书籍
-  * @author chy 
+  * @author chy   
   * @date 8 Oct 2019 22:59:48 
   * @version 1.0  
 */
